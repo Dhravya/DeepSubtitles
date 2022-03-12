@@ -8,7 +8,7 @@ my_video = mp.VideoFileClip("rickroll.mp4", audio=True)
 
 w, h = moviesize = my_video.size
 
-subtitles = {0:"This is the start", 10:"This is the end"}
+subtitles = [(5,"Get rickrolled lol"), (10,"This is the end")]
 
 def text_generator(text):
     my_text = mp.TextClip(
@@ -22,13 +22,17 @@ def text_generator(text):
     )
     return txt_col
 
-txt_col = text_generator("Rick Astley - Never Gonna Give You Up")
+final_so_far = my_video
 
-def pos(t: float):
-    return (max(w / 30, int(w - 0.5 * w * 4)), h - txt_col.h - int(h / 30))
+for t, text in subtitles:
+    txt_col = text_generator(text)
+    
+    end_time =  subtitles[t+1][0] if t+1 < len(subtitles) else 5
 
-txt_mov = txt_col.set_pos(pos)
+    txt_col = txt_col.set_start(t)
 
-final = mp.CompositeVideoClip([my_video, txt_mov])
+    txt_mov = txt_col.set_position((max(w / 30, int(w - 0.5 * w * 4)), h - txt_col.h - int(h / 30)))
+    final_so_far = mp.CompositeVideoClip([final_so_far, txt_mov])
 
-final.subclip(0, 17).write_videofile("final.mp4", fps=24, codec="libx264")
+
+final_so_far.subclip(0, 16).write_videofile("final.mp4", fps=24, codec="libx264")
