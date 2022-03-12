@@ -28,7 +28,8 @@ for t, text in subtitles:
     txt_col = text_generator(text)
     
     end_time =  subtitles[t+1][0] if t+1 < len(subtitles) else 5
-
+    
+    txt_col = txt_col.set_end(end_time)
     txt_col = txt_col.set_start(t)
 
     txt_mov = txt_col.set_position((max(w / 30, int(w - 0.5 * w * 4)), h - txt_col.h - int(h / 30)))
