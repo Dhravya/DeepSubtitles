@@ -2,3 +2,4 @@ venv/
 .env
 rickroll.mp4
 final.mp4
+.vscode/
