@@ -9,7 +9,7 @@ A Python script that generates subtitles and renders them to the video.
 <br><br>
 
 ## Here's a Demo 👀
-<img src="https://j.gifs.com/57wQ8v.gif" width="300">
+<img src="https://j.gifs.com/57wQ8v.gif" width="400" align="center">
 
 ## What it does:
 
@@ -28,3 +28,23 @@ Goal of this project was to provide accessibility to the video for people with d
 One Caveat is that it's not a fast script and probably not ideal for a production environment.
 
 If you have any questions, please feel free to reach out to me, if you'd like to contribute to this project, feel free to make an issue on [Github](https://github.com)
+
+## Installation and Usage
+
+Clone this repository and download the requirements:
+```shell
+git clone https://github.com/Dhravya/DeepSubtitles
+cd DeepSubtitles
+pip install -r requirements.txt
+```
+
+Then, go to src/conf.py and enter your Deepgram API key.
+
+> Get the key from [Here](https://deepgram.com/account/api)
+
+Make sure to change the `video_path` variable to the path of the video you want to process.
+
+And finally, run the script:
+```shell
+python src/main.py
+```
