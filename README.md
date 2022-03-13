@@ -10,7 +10,6 @@ A Python script that generates subtitles and renders them to the video.
 
 ## Here's a Demo 👀
 <img src="https://j.gifs.com/57wQ8v.gif" width="300">
-<video src="./assets/demo.mp4">
 
 ## What it does:
 
