@@ -32,15 +32,15 @@ class SubtitleMaker:
 
         # Creates the textclip object 
         my_text = mp.TextClip(
-            text, font="Amiri-regular", color="white", fontsize=34
+            text, font="Amiri-regular", color="white", fontsize=15
         )
 
         # Creates the background clip
         txt_col = my_text.on_color(
-            size=(self.video.w + my_text.w, my_text.h + 5),
+            size=(my_text.w + 20, my_text.h + 5),
             color=(0, 0, 0),
             pos=(6, "center"),
-            col_opacity=0.0,
+            col_opacity=0.3,
         )
         return txt_col
 
@@ -62,9 +62,11 @@ class SubtitleMaker:
 
         w, h = moviesize = self.video.size
 
+        display_str = ""
         for t, text in self.subtitles:
-            txt_col = self._text_generator(text)
-            
+            display_str = display_str + (text + " ") if len(display_str.split(" ")) < 10 else text
+            txt_col = self._text_generator(display_str)
+
             # Endtime is the value of the next subtitle to come
             end_time =  self.subtitles[int(t)+1][0] if t+1 < len(self.subtitles) else 5
             
@@ -75,17 +77,20 @@ class SubtitleMaker:
             #  Adds the text clip to the final video
             # TODO: Add a fade in and out effect
             # TODO: must be a better way to place text
-            txt_mov = txt_col.set_position((max(w / 30, int(w - 0.5 * w * 4)), h - txt_col.h - int(h / 30)))
+            txt_mov = txt_col.set_position((w/4, h - txt_col.h - int(h / 30) - 20))
 
             # Composite the text clip onto the video
             self.final_so_far = mp.CompositeVideoClip([self.final_so_far, txt_mov])
 
         # Saves the final video
-        self.final_so_far.subclip(0, 16).write_videofile("final.mp4", fps=24, codec="libx264")
+        self.final_so_far.subclip(0, 6).write_videofile("final.mp4", fps=24, codec="libx264")
 
 if __name__ == "__main__":
     subtitles = [
         (0.0, "Hello"),
+        (0.2, "Hello"),
+        (0.4, "Hello"),
+        (0.8, "Hello"),
         (1.0, "World"),
         (2.0, "!"),
     ]
