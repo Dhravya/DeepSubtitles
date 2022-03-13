@@ -75,15 +75,13 @@ class SubtitleMaker:
             txt_col = txt_col.set_start(t)
 
             #  Adds the text clip to the final video
-            # TODO: Add a fade in and out effect
-            # TODO: must be a better way to place text
             txt_mov = txt_col.set_position((w/4, h - txt_col.h - int(h / 30) - 20))
 
             # Composite the text clip onto the video
             self.final_so_far = mp.CompositeVideoClip([self.final_so_far, txt_mov])
 
         # Saves the final video
-        self.final_so_far.subclip(0, 6).write_videofile("final.mp4", fps=24, codec="libx264")
+        self.final_so_far.subclip(0, 6).write_videofile("final.mp4", fps=24, codec="libx264", temp_audiofile="tmp.mp3", remove_temp=True)
 
 if __name__ == "__main__":
     subtitles = [
