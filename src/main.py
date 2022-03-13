@@ -15,12 +15,12 @@ if os.name == "nt":
     change_settings({"IMAGEMAGICK_BINARY": IMAGEMAGIK_LOCATION})
 
 
-class SubtitleMaker:
+class DeepSub:
     """
     Subtitle Maker
     ~~~~~~~~~~~~~~~~~~~~
     Takes a video and renders subtitles onto it. Powered by Deepgram.
-    Made by Dhravya Shah
+    Made by Dhravya Shah for Deepgram Hackathon by dev.to.
 
     Requires moviepy, deepgram, and imagemagik.
 
@@ -222,7 +222,7 @@ class SubtitleMaker:
             exit()
 
 if __name__ == "__main__":
-    sm = SubtitleMaker("t.mp4")
+    sm = DeepSub("t.mp4")
     loop = asyncio.get_event_loop()
     s = loop.run_until_complete(sm.get_subtitles())
     sm.render_subtitles(s)
