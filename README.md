@@ -1,6 +1,6 @@
-<img src="./assets/logo.png" alt="DeepSub Logo" style="float: left; margin: 0 10px 0 0;" align="left" height="150" width="150">
+<img src="./assets/logo.png" alt="DeepSubtitles Logo" style="float: left; margin: 0 10px 0 0;" align="left" height="150" width="150">
 
-## DeepSub
+## DeepSubtitles
 
 A Python script that generates subtitles and renders them to the video.
 > This was made as a submission for the [DeepGram x Dev](https://dev.to/devteam/join-us-for-a-new-kind-of-hackathon-on-dev-brought-to-you-by-deepgram-2bjd) Hackathon
