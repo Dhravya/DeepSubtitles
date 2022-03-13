@@ -1,5 +1,7 @@
 venv/
 .env
-rickroll.mp4
-final.mp4
+*.mp4
 .vscode/
+
+# Demo video
+!demo.mp4
