@@ -1,7 +1,8 @@
 venv/
 .env
 *.mp4
-.vscode/
+*.vscode/
+*__pycache__/
 
 # Demo video
 !demo.mp4
